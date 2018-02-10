@@ -11,7 +11,7 @@ class Target:
         self.y_coor = 0
         self.screen = screen
         
-        self.apple_img = pygame.image.load('apple.png')
+        self.apple_img = pygame.image.load('./assets/food/apple.png')
         self.apple = pygame.transform.scale(self.apple_img, (100, 100))
         self.apple_box = pygame.Surface((100, 100))
         self.apple_box.fill(SUNSET_BACKDROP)
