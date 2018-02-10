@@ -13,11 +13,8 @@ def main():
     clock = pygame.time.Clock()
     
     pygame.display.set_caption('Blocker')
-    screen.fill(SUNSET_BACKDROP)
+    screen.fill((255, 255, 255))
     main_game = GameLevel(screen)
-
-    tick = 0
-
     while not end_game:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -25,13 +22,10 @@ def main():
         
         clock.tick(LOOP_FREQUENCY)
         
-        main_game.update_state(tick)
+        main_game.update_state()
         
         pygame.display.update()
-
-        if tick == 60:
-            tick = -1
-        tick += 1
+    
     return
 
 
