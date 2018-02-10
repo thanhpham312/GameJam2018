@@ -13,13 +13,13 @@ class Target:
         
         self.apple_img = pygame.image.load('apple.png')
         self.apple = pygame.transform.scale(self.apple_img, (100, 100))
-<<<<<<< HEAD
+
         self.apple_erase_img = pygame.image.load('./assets/food/apple_erase.png')
         self.apple_erase = pygame.transform.scale(self.apple_erase_img, (100, 100))
-=======
+
         self.apple_box = pygame.Surface((100, 100))
         self.apple_box.fill(WHITE)
->>>>>>> b495cab876f0fd0e20ef964e9df00e955db14d71
+
         
         self.draw()
         
