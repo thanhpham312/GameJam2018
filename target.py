@@ -13,8 +13,8 @@ class Target:
         
         self.apple_img = pygame.image.load('./assets/food/apple.png')
         self.apple = pygame.transform.scale(self.apple_img, (100, 100))
-        self.apple_box = pygame.Surface((100, 100))
-        self.apple_box.fill(SUNSET_BACKDROP)
+        self.apple_erase_img = pygame.image.load('./assets/food/apple_erase.png')
+        self.apple_erase = pygame.transform.scale(self.apple_erase_img, (100, 100))
         
         self.draw()
         
@@ -22,13 +22,13 @@ class Target:
         self.screen.blit(self.apple, (self.x_coor, self.y_coor))
         
     def erase(self):
-        self.screen.blit(self.apple_box, (self.x_coor, self.y_coor))
+        self.screen.blit(self.apple_erase, (self.x_coor, self.y_coor))
     
     def move(self):
         self.x_coor += Target.__X_OFFSET
         self.y_coor += Target.__Y_OFFSET
     
     def update_target_state(self):
-        # self.erase()
+        self.erase()
         self.move()
         self.draw()
