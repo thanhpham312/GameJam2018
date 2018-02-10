@@ -6,15 +6,15 @@ class Target:
     __X_OFFSET = 1
     __Y_OFFSET = 1
     
-    def __init__(self, screen):
-        self.x_coor = 0.5 * SCREEN_WIDTH
+    def __init__(self, screen, x_coor = 0.5 * SCREEN_WIDTH):
+        self.x_coor = x_coor
         self.y_coor = 0
         self.screen = screen
         
         self.apple_img = pygame.image.load('apple.png')
         self.apple = pygame.transform.scale(self.apple_img, (100, 100))
         self.apple_box = pygame.Surface((100, 100))
-        self.apple_box.fill(WHITE)
+        self.apple_box.fill(SUNSET_BACKDROP)
         
         self.draw()
         
@@ -29,6 +29,6 @@ class Target:
         self.y_coor += Target.__Y_OFFSET
     
     def update_target_state(self):
-        self.erase()
+        # self.erase()
         self.move()
         self.draw()
