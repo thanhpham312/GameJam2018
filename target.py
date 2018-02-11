@@ -8,7 +8,7 @@ class Target:
     def __init__(self, screen, x_coor=0.5*SCREEN_WIDTH):
         self.x_coor = x_coor
         self.y_coor = 0
-        self.size = 100
+        self.size = 75
         self.screen = screen
         self.exploding = False
         self.detonate_timer = 0
