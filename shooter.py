@@ -22,12 +22,11 @@ class Shooter():
 
     def move(self, direction):
         # self.erase()
-        move_distance = 0
 
         if direction == 'left' and self.x_pos > 0:
             self.x_pos -= self.move_distance*self.speed_modifier
         elif direction == 'right' and self.x_pos < SCREEN_WIDTH - self.width:
-            self.x_pos += self.move_distance * self.speed_modifier
+            self.x_pos += self.move_distance*self.speed_modifier
         # self.draw()
         return
 
