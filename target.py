@@ -3,18 +3,18 @@ from constants import *
 
 
 class Target:
-    __X_OFFSET = 1
+    __X_OFFSET = 0
     __Y_OFFSET = 1
     
-    def __init__(self, screen):
-        self.x_coor = 0.5 * SCREEN_WIDTH
+    def __init__(self, screen, x_coor=0.5*SCREEN_WIDTH):
+        self.x_coor = x_coor
         self.y_coor = 0
         self.screen = screen
         
         self.apple_img = pygame.image.load('apple.png')
         self.apple = pygame.transform.scale(self.apple_img, (100, 100))
-        self.apple_box = pygame.Surface((100, 100))
-        self.apple_box.fill(WHITE)
+        self.apple_erase_img = pygame.image.load('apple_erase.png')
+        self.apple_erase = pygame.transform.scale(self.apple_erase_img, (100, 100))
         
         self.draw()
         
@@ -22,7 +22,7 @@ class Target:
         self.screen.blit(self.apple, (self.x_coor, self.y_coor))
         
     def erase(self):
-        self.screen.blit(self.apple_box, (self.x_coor, self.y_coor))
+        self.screen.blit(self.apple_erase, (self.x_coor, self.y_coor))
     
     def move(self):
         self.x_coor += Target.__X_OFFSET
@@ -32,3 +32,7 @@ class Target:
         self.erase()
         self.move()
         self.draw()
+
+    @property
+    def end(self):
+        return self.y_coor > SCREEN_HEIGHT
