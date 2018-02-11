@@ -3,11 +3,6 @@ import sys
 
 from constants import *
 from game_level import GameLevel
-<<<<<<< HEAD
-
-=======
->>>>>>> 46ac522916c946beca485af2a3e95a5822d4954e
-
 def main():
 
     pygame.init()
@@ -21,11 +16,6 @@ def main():
     screen.blit(background, (0, 0))
     main_game = GameLevel(screen)
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 46ac522916c946beca485af2a3e95a5822d4954e
     tick = 0
 
     while not end_game:
