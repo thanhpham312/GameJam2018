@@ -1,6 +1,7 @@
 import random
 import pygame
 
+from shooter import Shooter
 from constants import *
 from target import Target
 from shooter import Shooter
@@ -25,6 +26,7 @@ class GameLevel:
             entry.update_target_state()
             if entry.end:
                 self.targets.remove(entry)
+        self.shooter.move()
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a]:
