@@ -12,7 +12,7 @@ class Bullet():
         self.move_distance = BULLET_MOVE_DISTANCE
         self.speed = BULLET_SPEED
 
-        self.bullet_img = pygame.image.load('assets/game_elements/bullet.png')
+        self.bullet_img = pygame.image.load('./assets/game_elements/bullet.png')
         self.bullet = pygame.transform.scale(self.bullet_img, (self.width, self.height))
         return
 
