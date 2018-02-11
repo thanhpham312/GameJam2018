@@ -4,6 +4,7 @@ import sys
 from constants import *
 from game_level import GameLevel
 from shooter import Shooter
+from mouth import Mouth
 
 
 def main():
@@ -20,11 +21,15 @@ def main():
     main_game = GameLevel(screen)
 
     shooter = Shooter(screen)
-
     tick = 0
 
     while not end_game:
         screen.blit(background, (0, 0))
+        mouth = Mouth(screen)
+        mouth.draw()
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_z]:
+            mouth.close()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
