@@ -35,6 +35,7 @@ class GameLevel:
         for entry in self.targets:
             entry.update_target_state()
             if entry.eaten:
+                self.total_score += entry.score
                 self.eat_food.append(entry)
                 self.targets.remove(entry)
                 self.eating = True
@@ -46,7 +47,7 @@ class GameLevel:
         if self.eat_count == TIM_CAPACITY:
             new_score = 0
             for entry in self.eat_food:
-                new_score += entry.score
+                new_score += (entry.score * 10)
                 self.eat_food.remove(entry)
             self.total_score += new_score
             return True
@@ -68,7 +69,8 @@ class GameLevel:
         
         self.check_collision()
 
-        self.final_score = round((self.total_score - self.spawn_count / (SPAWN_LIMIT / TIM_CAPACITY)) * 10)
+        # self.final_score = round((self.total_score - self.spawn_count / (SPAWN_LIMIT / TIM_CAPACITY)) * 10)
+        self.final_score = self.total_score * 10
         
         if self.spawn_count >= SPAWN_LIMIT and len(self.targets) == 0:
             return True
