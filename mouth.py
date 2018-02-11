@@ -5,14 +5,14 @@ class Mouth():
 
     def __init__(self, screen):
         self.screen = screen
-        self.lxpos = 0-SCREEN_WIDTH/4
+        self.lxpos = 20 - MOUTH_WIDTH
         self.ypos = SCREEN_HEIGHT-SCREEN_WIDTH/4
-        self.rxpos = SCREEN_WIDTH*3/4
+        self.rxpos = SCREEN_WIDTH - 20
 
         self.left_img = pygame.image.load('assets/game_elements/mouth-left.png')
         self.right_img = pygame.image.load('assets/game_elements/mouth-right.png')
-        self.left = pygame.transform.scale(self.left_img, (int(SCREEN_WIDTH / 2), int(SCREEN_WIDTH / 4)))
-        self.right = pygame.transform.scale(self.right_img, (int(SCREEN_WIDTH / 2), int(SCREEN_WIDTH / 4)))
+        self.left = pygame.transform.scale(self.left_img, (MOUTH_WIDTH, MOUTH_HEIGHT))
+        self.right = pygame.transform.scale(self.right_img, (MOUTH_WIDTH, MOUTH_HEIGHT))
 
     def draw(self):
         self.screen.blit(self.left, (self.lxpos, self.ypos))
