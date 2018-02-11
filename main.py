@@ -3,7 +3,6 @@ import sys
 
 from constants import *
 from game_level import GameLevel
-from shooter import Shooter
 
 
 def main():
@@ -19,8 +18,6 @@ def main():
     screen.blit(background, (0, 0))
     main_game = GameLevel(screen)
 
-    shooter = Shooter(screen)
-
     tick = 0
 
     while not end_game:
@@ -33,7 +30,6 @@ def main():
         
         main_game.update_state(tick)
 
-        shooter.move()
         pygame.display.update()
         if tick == TARGET_UPDATE_DELAY:
             tick = -1

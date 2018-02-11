@@ -2,13 +2,14 @@ import pygame
 from constants import *
 
 class Shooter():
-    def __init__(self, screen, width = SHOOTER_HEIGHT, height = SHOOTER_HEIGHT, x_pos = 0, y_pos = SCREEN_HEIGHT - SHOOTER_HEIGHT):
+    def __init__(self, screen, width = SHOOTER_HEIGHT, height = SHOOTER_HEIGHT, x_pos = SCREEN_WIDTH/2 - SHOOTER_WIDTH/2, y_pos = SCREEN_HEIGHT - SHOOTER_HEIGHT):
         self.screen = screen
         self.width = width
         self.height = height
         self.x_pos = x_pos
         self.y_pos = y_pos
         self.direction = 1
+        self.move_distance = SHOOTER_MOVE_DISTANCE
         self.speed_modifier = SHOOTER_SPEED
 
         self.shooter_img = pygame.image.load('assets/game_elements/archery.png')
@@ -19,13 +20,15 @@ class Shooter():
 
         return
 
-    def move(self):
+    def move(self, direction):
         # self.erase()
-        if self.x_pos < SCREEN_WIDTH:
-            self.x_pos += self.speed_modifier
-        else:
-            self.x_pos = 0
-        self.draw()
+        move_distance = 0
+
+        if direction == 'left' and self.x_pos > 0:
+            self.x_pos -= self.move_distance*self.speed_modifier
+        elif direction == 'right' and self.x_pos < SCREEN_WIDTH - self.width:
+            self.x_pos += self.move_distance * self.speed_modifier
+        # self.draw()
         return
 
     def draw(self):
