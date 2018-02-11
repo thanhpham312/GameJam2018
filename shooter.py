@@ -31,6 +31,14 @@ class Shooter():
         # self.draw()
         return
 
+    def update_shooter(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_a]:
+            self.move('left')
+        elif keys[pygame.K_d]:
+            self.move('right')
+        self.draw()
+
     def draw(self):
         self.screen.blit(self.shooter, (self.x_pos, self.y_pos))
 
