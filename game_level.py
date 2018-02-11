@@ -16,6 +16,7 @@ class GameLevel:
         self.shooter = Shooter(self.screen)
         self.mouth = Mouth(screen)
         self.total_score = 0
+        self.final_score = 0
         self.eating = False
         self.chew_timer = 0
         self.spawn_count = 0
@@ -66,6 +67,8 @@ class GameLevel:
                 self.eating = False
         
         self.check_collision()
+
+        self.final_score = round((self.total_score - self.spawn_count / (SPAWN_LIMIT / TIM_CAPACITY)) * 10)
         
         if self.spawn_count >= SPAWN_LIMIT and len(self.targets) == 0:
             return True

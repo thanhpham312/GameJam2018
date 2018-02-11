@@ -33,7 +33,11 @@ class Game():
         return
 
     def splash(self):
-        pass
+        self.splash_screen.draw()
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_RETURN]:
+            self.game_screen += 1
+        return
 
     def run(self):
         while not self.end_game:
@@ -45,24 +49,23 @@ class Game():
             self.clock.tick(LOOP_FREQUENCY)
 
             if self.game_screen == 1:
-                self.splash_screen.draw()
-                keys = pygame.key.get_pressed()
-                if keys[pygame.K_RETURN]:
-                    self.game_screen = 2
+                self.splash()
 
             elif self.game_screen == 2:
+                self.final_score = self.main_game.final_score
+                self.splash_screen = Splash(self.screen, 'playing', str(self.final_score))
+                self.splash_screen.draw()
                 if self.main_game.update_state(self.tick):
-                    self.final_score = round((self.main_game.total_score - self.main_game.spawn_count / (SPAWN_LIMIT / TIM_CAPACITY)) * 10)
                     # print("Final score: {}pts.".format(self.final_score))
                     # sys.exit()
                     self.game_screen = 3
 
             elif self.game_screen == 3:
                 self.splash_screen = Splash(self.screen, 'end', str(self.final_score))
-                self.splash_screen.draw()
-                keys = pygame.key.get_pressed()
-                if keys[pygame.K_RETURN]:
-                    sys.exit()
+                self.splash()
+
+            elif self.game_screen == 4:
+                sys.exit()
 
             pygame.display.update()
             if self.tick == TARGET_UPDATE_DELAY:

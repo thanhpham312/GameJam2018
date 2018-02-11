@@ -7,6 +7,11 @@ class Splash():
         self.ended = False
         if type == 'start':
             self.splash_elements.append(TextBox(screen, 'ENTER GAME'))
+        elif type == 'playing':
+            total_score_text = TextBox(screen, text)
+            total_score_text.x_pos = 20
+            total_score_text.y_pos = 10
+            self.splash_elements.append(total_score_text)
         elif type == 'end':
             end_score_text = TextBox(screen, 'TOTAL SCORE:')
             end_score_text.y_pos = 3*SCREEN_HEIGHT/5 - SPLASH_HEIGHT
