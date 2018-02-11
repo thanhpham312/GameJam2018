@@ -15,7 +15,7 @@ class GameLevel:
         self.targets.append(new_target)
     
     def update_state(self, tick):
-        if len(self.targets) < 5 and tick == 60:
+        if len(self.targets) < 10 and tick == 60:
             self.create_random_target()
 
         for entry in self.targets:
