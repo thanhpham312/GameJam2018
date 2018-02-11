@@ -17,7 +17,7 @@ class Shooter():
         self.speed_modifier = SHOOTER_SPEED
         self.shooting = False
 
-        self.shooter_img = pygame.image.load('assets/game_elements/bullet.png')
+        self.shooter_img = pygame.image.load('assets/game_elements/shooter.png')
         self.shooter = pygame.transform.scale(self.shooter_img, (self.width, self.height))
         self.eraser = pygame.Surface((self.width, self.height))
         self.eraser.set_alpha(0)
