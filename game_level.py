@@ -27,6 +27,11 @@ class GameLevel:
             if entry.end:
                 self.targets.remove(entry)
 
+        for bullet in self.shooter.bullets:
+            bullet.move()
+            if bullet.y_pos < 0:
+                self.shooter.bullets.remove(bullet)
+
         self.shooter.update_shooter()
 
     def create_random_target(self):
