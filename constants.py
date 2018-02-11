@@ -15,11 +15,6 @@ SHOOTER_SPEED = 1
 SHOOTER_WIDTH = 50
 SHOOTER_HEIGHT = 50
 
-
-SCREEN_WIDTH = 640
-SCREEN_HEIGHT = 640
-PIXEL = 5
-
 LOOP_FREQUENCY = 150
 
 FOOD = ["./assets/food/good/", "./assets/food/bad/"]

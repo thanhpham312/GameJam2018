@@ -13,10 +13,10 @@ class Target:
 
         img_file = self.get_random_img()
         
-        self.apple_img = pygame.image.load(img_file[0])
+        self.apple_img = pygame.image.load(img_file)
         self.apple = pygame.transform.scale(self.apple_img, (100, 100))
-        self.apple_erase_img = pygame.image.load(img_file[1])
-        self.apple_erase = pygame.transform.scale(self.apple_erase_img, (100, 100))
+        # self.apple_erase_img = pygame.image.load(img_file[1])
+        # self.apple_erase = pygame.transform.scale(self.apple_erase_img, (100, 100))
         
         self.draw()
         
@@ -30,14 +30,16 @@ class Target:
         self.x_coor += Target.__X_OFFSET
         self.y_coor += Target.__Y_OFFSET
 
-    def get_random_img(self):
-        food_list = TARGETS
+    @staticmethod
+    def get_random_img():
+        type_index = random.randint(0, 1)
+        food_list = TARGETS[type_index]
         random.shuffle(food_list)
 
-        return FOOD[1] + food_list[0] + IMG_EXT, FOOD[1] + food_list[0] + "_erase" + IMG_EXT
+        return FOOD[type_index] + food_list[0] + IMG_EXT
 
     def update_target_state(self):
-        self.erase()
+        #self.erase()
         self.move()
         self.draw()
 

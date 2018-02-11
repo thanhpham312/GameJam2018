@@ -24,6 +24,7 @@ def main():
     tick = 0
 
     while not end_game:
+        screen.blit(background, (0, 0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -31,15 +32,10 @@ def main():
         clock.tick(LOOP_FREQUENCY)
         
         main_game.update_state(tick)
-        
-        pygame.display.update()
-
-        screen.blit(background, (0, 0))
-
 
         shooter.move()
-
-        if tick == 60:
+        pygame.display.update()
+        if tick == TARGET_UPDATE_DELAY:
             tick = -1
 
         tick += 1
