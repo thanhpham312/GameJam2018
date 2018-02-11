@@ -4,7 +4,7 @@ from bullet import Bullet
 
 class Shooter():
     def __init__(self, screen, width = SHOOTER_HEIGHT, height = SHOOTER_HEIGHT, x_pos = SCREEN_WIDTH/2 - SHOOTER_WIDTH/2
-                 , y_pos = SCREEN_HEIGHT - SHOOTER_HEIGHT):
+                 , y_pos = SCREEN_HEIGHT - SHOOTER_HEIGHT - MOUTH_HEIGHT):
         self.bullets = []
 
         self.screen = screen
@@ -50,7 +50,7 @@ class Shooter():
 
     def shoot(self):
         if len(self.bullets) < BULLET_LIMIT:
-            self.bullets.append(Bullet(self.screen, self.x_pos + self.width/2, SCREEN_HEIGHT - self.height))
+            self.bullets.append(Bullet(self.screen, self.x_pos + self.width/2.5, self.y_pos))
 
     def draw(self):
         self.screen.blit(self.shooter, (self.x_pos, self.y_pos))

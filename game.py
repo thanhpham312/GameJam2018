@@ -16,16 +16,18 @@ class Game():
 
         pygame.display.set_caption('Dreamer')
 
-        background_img = pygame.image.load('./assets/backgrounds/background.jpg')
+        background_img = pygame.image.load('./assets/backgrounds/background.png')
         self.background = pygame.transform.scale(background_img, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
         self.screen.blit(self.background, (0, 0))
 
-        self.splash_screen = Splash(self.screen)
+        self.splash_screen = Splash(self.screen, 'start')
 
         self.main_game = GameLevel(self.screen)
 
         self.tick = 0
+
+        self.final_score = 0
 
         self.game_screen = 1
         return
@@ -50,8 +52,16 @@ class Game():
 
             elif self.game_screen == 2:
                 if self.main_game.update_state(self.tick):
-                    final_score = round((self.main_game.total_score - self.main_game.spawn_count / (SPAWN_LIMIT / TIM_CAPACITY)) * 10)
-                    print("Final score: {}pts.".format(final_score))
+                    self.final_score = round((self.main_game.total_score - self.main_game.spawn_count / (SPAWN_LIMIT / TIM_CAPACITY)) * 10)
+                    # print("Final score: {}pts.".format(self.final_score))
+                    # sys.exit()
+                    self.game_screen = 3
+
+            elif self.game_screen == 3:
+                self.splash_screen = Splash(self.screen, 'end', str(self.final_score))
+                self.splash_screen.draw()
+                keys = pygame.key.get_pressed()
+                if keys[pygame.K_RETURN]:
                     sys.exit()
 
             pygame.display.update()
