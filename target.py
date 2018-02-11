@@ -7,8 +7,8 @@ class Target:
     
     def __init__(self, screen, x_coor=0.5*SCREEN_WIDTH):
         self.x_coor = x_coor
-        self.y_coor = 0
-        self.size = 75
+        self.y_coor = TARGET_INITIAL_Y
+        self.size = TARGET_SIZE
         self.screen = screen
         self.exploding = False
         self.detonate_timer = 0
@@ -38,7 +38,8 @@ class Target:
             self.x_offset *= -1
         self.y_coor += Target.__Y_OFFSET
 
-    def get_random_offset(self):
+    @staticmethod
+    def get_random_offset():
         trajectory_pool = TRAJECTORY
         random.shuffle(trajectory_pool)
         return trajectory_pool[0]
@@ -48,25 +49,25 @@ class Target:
         food_list = TARGETS[type_index]
         random.shuffle(food_list)
         if type_index == 1:
-            self.score = 1
+            self.score = BAD_SCORE
         else:
-            self.score = -1
+            self.score = GOOD_SCORE
 
         return FOOD[type_index] + food_list[0] + IMG_EXT
 
     def update_target_state(self):
 
         if not self.exploding:
-            self.draw()
             self.move()
             self.draw()
+            self.check_y_pos()
         else:
             self.explode()
 
-        self.check_y_pos()
+        
 
     def check_y_pos(self):
-        if self.y_coor >= SCREEN_HEIGHT - MOUTH_HEIGHT:
+        if self.y_coor >= SCREEN_HEIGHT - MOUTH_HEIGHT and not self.exploding:
             self.eaten = True
 
     def explode(self):

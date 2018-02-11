@@ -1,6 +1,7 @@
 import pygame
 from constants import *
 
+
 class Bullet():
     def __init__(self, screen, x_pos, y_pos, width = BULLET_WIDTH, height = BULLET_HEIGHT):
         self.screen = screen

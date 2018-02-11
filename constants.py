@@ -10,27 +10,40 @@ SCREEN_WIDTH = 360
 SCREEN_HEIGHT = 640
 PIXEL = 5
 
+SPAWN_LIMIT = 100
+TIM_CAPACITY = 20
+
 # Shooter:
 MOUTH_HEIGHT = 90
 MOUTH_WIDTH = 180
 
 # Shooter & bullets:
-SHOOTER_SPEED = 1
+SHOOTER_SPEED = 2
 SHOOTER_WIDTH = 50
 SHOOTER_HEIGHT = 50
-SHOOTER_MOVE_DISTANCE = 0.8
-TARGET_UPDATE_DELAY = 180
+SHOOTER_MOVE_DISTANCE = 1.6
 
 # Bullets
 BULLET_WIDTH = 10
 BULLET_HEIGHT = 10
 BULLET_MOVE_DISTANCE = 2
 BULLET_SPEED = 1
+BULLET_LIMIT = 5
 
-LOOP_FREQUENCY = 150
+LOOP_FREQUENCY = 200
 
+# Mouth
+CHEW_DELAY = 10
+
+# Target
+TARGET_UPDATE_DELAY = 90
+TARGET_SIZE = 75
+TARGET_LIMIT = 5
+TARGET_INITIAL_Y = -1 * TARGET_SIZE
+GOOD_SCORE = 1
+BAD_SCORE = -1
+HIT_BOX_PADDING = 10
 TRAJECTORY = [-1, 0, 1]
-
 FOOD = ["./assets/food/good/", "./assets/food/bad/"]
 TARGETS = [["cake", "cheese", "chocolate", "coffee", "cupcake", "egg", "fish", "fries", "glass", "ice_cream", "meat",
             "milk", "pint", "pizza", "sub", "sandwich", "steak", "tea", "turkey"],

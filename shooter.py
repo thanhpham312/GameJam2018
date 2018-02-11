@@ -3,7 +3,8 @@ from constants import *
 from bullet import Bullet
 
 class Shooter():
-    def __init__(self, screen, width = SHOOTER_HEIGHT, height = SHOOTER_HEIGHT, x_pos = SCREEN_WIDTH/2 - SHOOTER_WIDTH/2, y_pos = SCREEN_HEIGHT - SHOOTER_HEIGHT):
+    def __init__(self, screen, width = SHOOTER_HEIGHT, height = SHOOTER_HEIGHT, x_pos = SCREEN_WIDTH/2 - SHOOTER_WIDTH/2
+                 , y_pos = SCREEN_HEIGHT - SHOOTER_HEIGHT):
         self.bullets = []
 
         self.screen = screen
@@ -14,6 +15,7 @@ class Shooter():
         self.direction = 1
         self.move_distance = SHOOTER_MOVE_DISTANCE
         self.speed_modifier = SHOOTER_SPEED
+        self.shooting = False
 
         self.shooter_img = pygame.image.load('assets/game_elements/bullet.png')
         self.shooter = pygame.transform.scale(self.shooter_img, (self.width, self.height))
@@ -39,12 +41,15 @@ class Shooter():
             self.move('left')
         elif keys[pygame.K_d]:
             self.move('right')
-        if keys[pygame.K_SPACE]:
+        if keys[pygame.K_SPACE] and not self.shooting:
             self.shoot()
+            self.shooting = True
+        elif not keys[pygame.K_SPACE] and self.shooting:
+            self.shooting = False
         self.draw()
 
     def shoot(self):
-        if len(self.bullets) < 5:
+        if len(self.bullets) < BULLET_LIMIT:
             self.bullets.append(Bullet(self.screen, self.x_pos + self.width/2, SCREEN_HEIGHT - self.height))
 
     def draw(self):
