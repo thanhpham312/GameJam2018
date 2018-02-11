@@ -3,6 +3,7 @@ import sys
 
 from constants import *
 from game_level import GameLevel
+from shooter import Shooter
 
 
 def main():
@@ -13,8 +14,12 @@ def main():
     clock = pygame.time.Clock()
     
     pygame.display.set_caption('Blocker')
-    screen.fill(SUNSET_BACKDROP)
+    background_img = pygame.image.load('assets/backgrounds/background.jpg')
+    background = pygame.transform.scale(background_img, (SCREEN_WIDTH, SCREEN_HEIGHT))
+    screen.blit(background, (0, 0))
     main_game = GameLevel(screen)
+
+    shooter = Shooter(screen)
 
     tick = 0
 
@@ -29,10 +34,17 @@ def main():
         
         pygame.display.update()
 
+        screen.blit(background, (0, 0))
+
+
+        shooter.move()
+
         if tick == 60:
             tick = -1
 
         tick += 1
+
+
     
     return
 
