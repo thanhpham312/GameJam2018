@@ -48,12 +48,10 @@ class Target:
         return FOOD[type_index] + food_list[0] + IMG_EXT
 
     def update_target_state(self):
-<<<<<<< HEAD
-        self.draw()
-=======
+
         # self.erase()
         #self.erase()
->>>>>>> 42f01ea34688d1731053647a227fb6ea5709a6a4
+
         self.move()
         self.draw()
 

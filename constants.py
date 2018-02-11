@@ -19,6 +19,8 @@ TARGET_UPDATE_DELAY = 180
 
 LOOP_FREQUENCY = 150
 
+TRAJECTORY = [-1, 0, 1]
+
 FOOD = ["./assets/food/good/", "./assets/food/bad/"]
 TARGETS = [["cake", "cheese", "chocolate", "coffee", "cupcake", "egg", "fish", "fries", "glass", "ice_cream", "meat",
             "milk", "pint", "pizza", "sub", "sandwich", "steak", "tea", "turkey"],
