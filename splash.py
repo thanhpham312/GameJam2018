@@ -38,7 +38,7 @@ class Splash():
             end_score_text.y_pos = 7.5 * SCREEN_HEIGHT / 10
             self.splash_elements.append(end_score_text)
 
-            end_score_text = TextBox(self.screen, 'TIM PHAM')
+            end_score_text = TextBox(self.screen, 'THANH PHAM')
             end_score_text.y_pos = 8 * SCREEN_HEIGHT / 10
             self.splash_elements.append(end_score_text)
 
