@@ -1,1 +1,8 @@
 .idea
+*.pyc
+__pycache__/target.cpython-36.pyc
+__pycache__/shooter.cpython-36.pyc
+__pycache__/game_level.cpython-36.pyc
+__pycache__/constants.cpython-36.pyc
+.idea/workspace.xml
+.idea/GameJam2018.iml
