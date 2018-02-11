@@ -11,6 +11,7 @@ class Target:
         self.size = 100
         self.screen = screen
         self.exploding = False
+        self.detonate_timer = 0
 
         img_file = self.get_random_img()
         
@@ -18,6 +19,8 @@ class Target:
         self.apple = pygame.transform.scale(self.apple_img, (self.size, self.size))
         # self.apple_erase_img = pygame.image.load(img_file[1])
         # self.apple_erase = pygame.transform.scale(self.apple_erase_img, (100, 100))
+        self.explode_img = pygame.image.load("./assets/game_elements/explosion.png")
+        self.explode_block = pygame.transform.scale(self.explode_img, (self.size, self.size))
         self.x_offset = self.get_random_offset()
         self.draw()
         
@@ -49,17 +52,26 @@ class Target:
 
     def update_target_state(self):
 
-        # self.erase()
-        #self.erase()
-
-        self.move()
-        self.draw()
+        if not self.exploding:
+            self.draw()
+            self.move()
+            self.draw()
+        else:
+            self.explode()
 
         self.test_explosion()
 
     def test_explosion(self):
-        if self.y_coor <= 150:
+        if self.y_coor >= SCREEN_HEIGHT - 150:
             self.exploding = True
+
+    def explode(self):
+
+        if self.detonate_timer < 50:
+            self.screen.blit(self.explode_block, (self.x_coor, self.y_coor))
+            self.detonate_timer += 1
+        else:
+            self.y_coor = SCREEN_HEIGHT + 10
 
     @property
     def end(self):
