@@ -9,8 +9,8 @@ class Mouth():
         self.ypos = SCREEN_HEIGHT-SCREEN_WIDTH/4
         self.rxpos = SCREEN_WIDTH*3/4
 
-        self.left_img = pygame.image.load('assets/left.png')
-        self.right_img = pygame.image.load('assets/right.png')
+        self.left_img = pygame.image.load('assets/game_elements/mouth-left.png')
+        self.right_img = pygame.image.load('assets/game_elements/mouth-right.png')
         self.left = pygame.transform.scale(self.left_img, (int(SCREEN_WIDTH / 2), int(SCREEN_WIDTH / 4)))
         self.right = pygame.transform.scale(self.right_img, (int(SCREEN_WIDTH / 2), int(SCREEN_WIDTH / 4)))
 
