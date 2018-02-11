@@ -15,11 +15,8 @@ SHOOTER_SPEED = 1
 SHOOTER_WIDTH = 50
 SHOOTER_HEIGHT = 50
 
-<<<<<<< HEAD
-=======
 TARGET_UPDATE_DELAY = 180
 
->>>>>>> 63284e65cbb340a6b487ffdc419d3d574c441bd3
 LOOP_FREQUENCY = 150
 
 FOOD = ["./assets/food/good/", "./assets/food/bad/"]

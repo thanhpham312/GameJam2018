@@ -14,12 +14,8 @@ class GameLevel:
         self.targets.append(new_target)
     
     def update_state(self, tick):
-<<<<<<< HEAD
-        if len(self.targets) < 10 and tick == TARG:
-=======
 
         if len(self.targets) < 10 and tick == TARGET_UPDATE_DELAY:
->>>>>>> 63284e65cbb340a6b487ffdc419d3d574c441bd3
             self.create_random_target()
 
         for entry in self.targets:
