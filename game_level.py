@@ -27,12 +27,7 @@ class GameLevel:
             if entry.end:
                 self.targets.remove(entry)
 
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_a]:
-            self.shooter.move('left')
-        elif keys[pygame.K_d]:
-            self.shooter.move('right')
-        self.shooter.draw()
+        self.shooter.update_shooter()
 
     def create_random_target(self):
         random_x_coor = random.randint(0, SCREEN_WIDTH - 100)
