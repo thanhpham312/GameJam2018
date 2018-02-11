@@ -23,11 +23,7 @@ def main():
     tick = 0
 
     while not end_game:
-        mouth = Mouth(screen)
-        mouth.draw()
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_z]:
-            mouth.close()
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()

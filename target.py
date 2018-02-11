@@ -12,7 +12,8 @@ class Target:
         self.screen = screen
         self.exploding = False
         self.detonate_timer = 0
-
+        self.eaten = False
+        self.score = 0
         img_file = self.get_random_img()
         
         self.apple_img = pygame.image.load(img_file)
@@ -42,11 +43,14 @@ class Target:
         random.shuffle(trajectory_pool)
         return trajectory_pool[0]
 
-    @staticmethod
-    def get_random_img():
+    def get_random_img(self):
         type_index = random.randint(0, 1)
         food_list = TARGETS[type_index]
         random.shuffle(food_list)
+        if type_index == 1:
+            self.score = 1
+        else:
+            self.score = -1
 
         return FOOD[type_index] + food_list[0] + IMG_EXT
 
@@ -59,11 +63,11 @@ class Target:
         else:
             self.explode()
 
-        self.test_explosion()
+        self.check_y_pos()
 
-    def test_explosion(self):
-        if self.y_coor >= SCREEN_HEIGHT - 150:
-            self.exploding = True
+    def check_y_pos(self):
+        if self.y_coor >= SCREEN_HEIGHT - MOUTH_HEIGHT:
+            self.eaten = True
 
     def explode(self):
 

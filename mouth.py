@@ -23,6 +23,11 @@ class Mouth():
         self.rxpos = SCREEN_WIDTH/2
         self.draw()
 
+    def open(self):
+        self.lxpos = 20 - MOUTH_WIDTH
+        self.rxpos = SCREEN_WIDTH - 20
+        self.draw()
+
 
 if __name__ == '__main__':
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
