@@ -3,21 +3,25 @@ import random
 from constants import *
 
 class Target:
-    __X_OFFSET = 0
     __Y_OFFSET = 1
     
     def __init__(self, screen, x_coor=0.5*SCREEN_WIDTH):
         self.x_coor = x_coor
         self.y_coor = 0
+        self.size = 75
         self.screen = screen
+        self.exploding = False
+        self.detonate_timer = 0
 
         img_file = self.get_random_img()
         
         self.apple_img = pygame.image.load(img_file)
-        self.apple = pygame.transform.scale(self.apple_img, (100, 100))
+        self.apple = pygame.transform.scale(self.apple_img, (self.size, self.size))
         # self.apple_erase_img = pygame.image.load(img_file[1])
         # self.apple_erase = pygame.transform.scale(self.apple_erase_img, (100, 100))
-        
+        self.explode_img = pygame.image.load("./assets/game_elements/explosion.png")
+        self.explode_block = pygame.transform.scale(self.explode_img, (self.size, self.size))
+        self.x_offset = self.get_random_offset()
         self.draw()
         
     def draw(self):
@@ -27,8 +31,16 @@ class Target:
         self.screen.blit(self.apple_erase, (self.x_coor, self.y_coor))
     
     def move(self):
-        self.x_coor += Target.__X_OFFSET
+        self.x_coor += self.x_offset
+        if self.x_coor + self.size > SCREEN_WIDTH or self.x_coor < 0:
+            self.x_coor -= self.x_offset
+            self.x_offset *= -1
         self.y_coor += Target.__Y_OFFSET
+
+    def get_random_offset(self):
+        trajectory_pool = TRAJECTORY
+        random.shuffle(trajectory_pool)
+        return trajectory_pool[0]
 
     @staticmethod
     def get_random_img():
@@ -39,9 +51,27 @@ class Target:
         return FOOD[type_index] + food_list[0] + IMG_EXT
 
     def update_target_state(self):
-        #self.erase()
-        self.move()
-        self.draw()
+
+        if not self.exploding:
+            self.draw()
+            self.move()
+            self.draw()
+        else:
+            self.explode()
+
+        self.test_explosion()
+
+    def test_explosion(self):
+        if self.y_coor >= SCREEN_HEIGHT - 150:
+            self.exploding = True
+
+    def explode(self):
+
+        if self.detonate_timer < 50:
+            self.screen.blit(self.explode_block, (self.x_coor, self.y_coor))
+            self.detonate_timer += 1
+        else:
+            self.y_coor = SCREEN_HEIGHT + 10
 
     @property
     def end(self):

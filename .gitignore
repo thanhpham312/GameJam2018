@@ -1,4 +1,5 @@
 .idea
+<<<<<<< HEAD
 *.pyc
 __pycache__/target.cpython-36.pyc
 __pycache__/shooter.cpython-36.pyc
@@ -6,3 +7,8 @@ __pycache__/game_level.cpython-36.pyc
 __pycache__/constants.cpython-36.pyc
 .idea/workspace.xml
 .idea/GameJam2018.iml
+=======
+.idea/workspace.xml
+*.pyc
+*.pyc
+>>>>>>> 91375394e36fb71ae2e45f3c64e60779cd8a849e

@@ -14,10 +14,12 @@ PIXEL = 5
 SHOOTER_SPEED = 1
 SHOOTER_WIDTH = 50
 SHOOTER_HEIGHT = 50
-
+SHOOTER_MOVE_DISTANCE = 0.8
 TARGET_UPDATE_DELAY = 180
 
 LOOP_FREQUENCY = 150
+
+TRAJECTORY = [-1, 0, 1]
 
 FOOD = ["./assets/food/good/", "./assets/food/bad/"]
 TARGETS = [["cake", "cheese", "chocolate", "coffee", "cupcake", "egg", "fish", "fries", "glass", "ice_cream", "meat",
