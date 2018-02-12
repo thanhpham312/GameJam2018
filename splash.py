@@ -5,19 +5,50 @@ class Splash():
     def __init__(self, screen, type, text = ''):
         self.splash_elements = []
         self.ended = False
-        if type == 'start':
-            self.splash_elements.append(TextBox(screen, 'ENTER GAME'))
-        elif type == 'playing':
-            total_score_text = TextBox(screen, text)
-            total_score_text.x_pos = 20
+        self.screen = screen
+        self.type = type
+        self.text = text
+
+        self.populate_splash_screen()
+
+        return
+
+    def populate_splash_screen(self):
+        if self.type == 'start':
+            self.splash_elements.append(TextBox(self.screen, 'ENTER GAME'))
+        elif self.type == 'playing':
+            total_score_text = TextBox(self.screen, self.text)
+            total_score_text.x_pos = 10
             total_score_text.y_pos = 10
             self.splash_elements.append(total_score_text)
-        elif type == 'end':
-            end_score_text = TextBox(screen, 'TOTAL SCORE:')
-            end_score_text.y_pos = 3*SCREEN_HEIGHT/5 - SPLASH_HEIGHT
+        elif self.type == 'end':
+            end_score_text = TextBox(self.screen, 'TOTAL SCORE:')
+            end_score_text.y_pos = SCREEN_HEIGHT / 10
             self.splash_elements.append(end_score_text)
-            self.splash_elements.append(TextBox(screen, text))
-            pass
+
+            end_score_number_text = TextBox(self.screen, self.text)
+            end_score_number_text.y_pos = 1.5 * SCREEN_HEIGHT / 10
+            self.splash_elements.append(end_score_number_text)
+
+            end_score_text = TextBox(self.screen, 'A GAME BY:')
+            end_score_text.y_pos = 6.5 * SCREEN_HEIGHT / 10
+            self.splash_elements.append(end_score_text)
+
+            end_score_text = TextBox(self.screen, 'ALDRICH HUANG')
+            end_score_text.y_pos = 7.5 * SCREEN_HEIGHT / 10
+            self.splash_elements.append(end_score_text)
+
+            end_score_text = TextBox(self.screen, 'THANH PHAM')
+            end_score_text.y_pos = 8 * SCREEN_HEIGHT / 10
+            self.splash_elements.append(end_score_text)
+
+            end_score_text = TextBox(self.screen, 'DAVID XIAO')
+            end_score_text.y_pos = 8.5 * SCREEN_HEIGHT / 10
+            self.splash_elements.append(end_score_text)
+
+            end_score_text = TextBox(self.screen, 'IVAN SHALAGIN')
+            end_score_text.y_pos = 9 * SCREEN_HEIGHT / 10
+            self.splash_elements.append(end_score_text)
         return
 
     def draw(self):
